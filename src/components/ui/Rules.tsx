@@ -1,23 +1,23 @@
 const RULES = [
   {
     n: '01',
-    t: 'Pick a spot on the home screen.',
-    d: 'The big widget, two mediums, or a little icon.',
+    t: 'pick a spot on the home screen.',
+    d: 'the big widget, two mediums, or a little icon.',
   },
   {
     n: '02',
-    t: 'Pay a little more than whoever is there.',
-    d: 'Icons $11. Medium $55. The big one $110. Then it goes up $10 at a time.',
+    t: 'pay a little more than whoever is there.',
+    d: 'icons $11. medium $55. the big one $110. then it goes up $10 at a time.',
   },
   {
     n: '03',
-    t: 'Logo and a link. That’s the whole thing.',
-    d: 'No manifesto. No 1:1 post. Just your mark on the home screen.',
+    t: 'logo and a link. that’s the whole thing.',
+    d: 'no manifesto. just your mark on the home screen.',
   },
   {
     n: '04',
-    t: 'If someone outbids you, you paid for the time you had.',
-    d: 'No refunds. You’re still in the yearbook.',
+    t: 'if someone outbids you, you paid for the time you had.',
+    d: 'no refunds. you’re still in the yearbook.',
   },
 ]
 
@@ -25,8 +25,8 @@ export function Rules() {
   return (
     <section className="border-t border-line bg-white">
       <div className="mx-auto max-w-[980px] px-5 py-20 md:px-8 md:py-28">
-        <p className="text-[12px] font-semibold tracking-[0.08em] text-muted uppercase">
-          How this works
+        <p className="text-[12px] font-semibold tracking-[0.08em] text-muted lowercase">
+          how this works
         </p>
         <div className="mt-10 grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           {RULES.map((r) => (

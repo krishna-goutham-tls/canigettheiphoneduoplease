@@ -14,7 +14,7 @@ export function PhotoPhone() {
         <img
           src="/hero-image.png"
           alt="Open Duo"
-          className="block h-auto max-h-[min(52vh,560px)] w-auto max-w-full select-none lg:max-h-[min(78vh,900px)]"
+          className="block h-auto max-h-[min(70vh,720px)] w-auto max-w-full select-none lg:max-h-[min(82vh,920px)]"
           draggable={false}
         />
         <div className="absolute inset-0">

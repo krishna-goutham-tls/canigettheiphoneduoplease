@@ -28,19 +28,19 @@ export function formatUsd(n: number) {
 }
 
 export function faceLabel(face: string) {
-  if (face === 'widget') return 'Widgets'
-  if (face === 'grid') return 'Icons'
-  if (face === 'dock') return 'Dock'
+  if (face === 'widget') return 'widgets'
+  if (face === 'grid') return 'icons'
+  if (face === 'dock') return 'dock'
   return face
 }
 
 export function slotShort(id: string) {
-  if (id === 'widget-0') return 'Big widget'
-  if (id === 'widget-1') return 'Widget 2'
-  if (id === 'widget-2') return 'Widget 3'
+  if (id === 'widget-0') return 'big widget'
+  if (id === 'widget-1') return 'widget 2'
+  if (id === 'widget-2') return 'widget 3'
   const [face, index] = id.split('-')
   const n = Number(index) + 1
-  if (face === 'dock') return `Dock ${n}`
-  if (face === 'grid') return `Icon ${n}`
+  if (face === 'dock') return `dock ${n}`
+  if (face === 'grid') return `icon ${n}`
   return id
 }

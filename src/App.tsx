@@ -23,16 +23,16 @@ export default function App() {
         </div>
         <div
           id="slots"
-          className="mx-auto grid w-full max-w-[1240px] grid-cols-1 items-center gap-4 px-4 pb-10 pt-1 sm:px-5 lg:grid-cols-[200px_minmax(0,1fr)_200px] lg:gap-6 lg:pb-16"
+          className="mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center px-3 pb-6 pt-1 sm:px-5 lg:grid-cols-[148px_minmax(0,1fr)_148px] lg:gap-4 lg:pb-14"
         >
           <Leaderboard side="left" />
           <div className="min-w-0">
             <PhotoPhone />
           </div>
           <Leaderboard side="right" />
-          <div className="lg:hidden">
-            <LeaderboardMobile />
-          </div>
+        </div>
+        <div className="px-4 pb-10 lg:hidden">
+          <LeaderboardMobile />
         </div>
       </section>
 
@@ -41,7 +41,7 @@ export default function App() {
         <Rules />
         <Alumni />
         <footer className="border-t border-line px-5 py-8 text-[12px] text-muted md:px-10">
-          A small internet stunt for a large Apple bill. {formatUsd(GOAL_USD)}. Not affiliated with
+          a small internet stunt for a large apple bill. {formatUsd(GOAL_USD)}. not affiliated with
           Apple. iPhone Duo is a trademark of Apple Inc.
         </footer>
       </div>

@@ -158,7 +158,7 @@ export function BidSheet() {
             <div className="flex flex-col gap-3 p-6">
               <p className="text-[12px] text-muted">{slotShort(slot.id)}</p>
               <p className="text-[28px] font-semibold tracking-[-0.02em]">
-                {occupied ? `Take this from ${slot.holder?.name}` : 'Put your logo here'}
+                {occupied ? `take this from ${slot.holder?.name}` : 'put your logo here'}
               </p>
               <p className="text-[15px] text-muted">
                 {occupied
@@ -236,7 +236,7 @@ export function BidSheet() {
               ) : null}
               {error ? <p className="text-[14px] text-red-600">{error}</p> : null}
               <button type="submit" disabled={busy} className="btn-apple mt-1 w-full !py-3">
-                Pay {formatUsd(amount)} · yours until someone wants it more
+                pay {formatUsd(amount)} · yours until someone wants it more
               </button>
               <button type="button" onClick={closeSheet} className="btn-apple-text !text-link-dark">
                 Cancel

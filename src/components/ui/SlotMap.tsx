@@ -11,9 +11,9 @@ export function SlotMap() {
 
   return (
     <section className="mx-auto max-w-[980px] px-5 py-20 md:px-8 md:py-28">
-      <p className="text-[12px] font-semibold tracking-[0.08em] text-muted uppercase">Every plus</p>
+      <p className="text-[12px] font-semibold tracking-[0.08em] text-muted">every spot</p>
       <h2 className="mt-3 max-w-xl text-[32px] font-semibold tracking-[-0.02em] text-ink md:text-[40px]">
-        The whole home screen.
+        the whole home screen.
       </h2>
       <div className="mt-12 grid gap-10 md:grid-cols-2">
         {FACES.map((face) => (

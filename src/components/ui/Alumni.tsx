@@ -5,9 +5,9 @@ export function Alumni() {
   const events = useAuction((s) => s.events)
   return (
     <section className="mx-auto max-w-[980px] px-5 py-20 md:px-8 md:py-28">
-      <p className="text-[12px] font-semibold tracking-[0.08em] text-muted uppercase">Alumni</p>
+      <p className="text-[12px] font-semibold tracking-[0.08em] text-muted">yearbook</p>
       <h2 className="mt-3 text-[32px] font-semibold tracking-[-0.02em] text-ink md:text-[40px]">
-        Everyone who chipped in stays in the yearbook.
+        everyone who chipped in stays here.
       </h2>
       <ol className="mt-10 divide-y divide-line border-y border-line">
         {events.map((e) => (

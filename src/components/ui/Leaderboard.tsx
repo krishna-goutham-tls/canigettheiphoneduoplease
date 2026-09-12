@@ -12,55 +12,43 @@ function rankSlots(slots: Slot[]) {
   })
 }
 
-function BoardColumn({
-  rows,
-  start,
+function Row({
+  slot,
+  rank,
 }: {
-  rows: Slot[]
-  start: number
+  slot: Slot
+  rank: number
 }) {
   const inspect = useAuction((s) => s.inspect)
   const hover = useAuction((s) => s.hover)
   const hoveredId = useAuction((s) => s.hoveredId)
+  const occupied = Boolean(slot.holder)
+  const on = hoveredId === slot.id
+  const price = occupied ? slot.bidUsd : minBidUsd(slot.id, slot.bidUsd, false)
 
   return (
-    <ol className="w-full max-w-[200px]">
-      {rows.map((slot, i) => {
-        const occupied = Boolean(slot.holder)
-        const on = hoveredId === slot.id
-        const price = occupied ? slot.bidUsd : minBidUsd(slot.id, slot.bidUsd, false)
-        return (
-          <li key={slot.id}>
-            <button
-              type="button"
-              onClick={() => inspect(slot.id)}
-              onMouseEnter={() => hover(slot.id)}
-              onMouseLeave={() => hover(null)}
-              className={`flex w-full items-center gap-2 rounded-xl px-1.5 py-1.5 text-left ${
-                on ? 'bg-paper' : ''
-              }`}
-            >
-              <span className="w-4 shrink-0 text-[11px] text-muted">{start + i}</span>
-              {occupied ? (
-                <img
-                  src={slot.holder!.logoDataUrl}
-                  alt=""
-                  className="h-7 w-7 shrink-0 rounded-lg object-cover"
-                />
-              ) : (
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-paper text-[13px] text-muted">
-                  +
-                </span>
-              )}
-              <span className="min-w-0 flex-1 truncate text-[13px] text-ink">
-                {occupied ? slot.holder!.name : slotShort(slot.id)}
-              </span>
-              <span className="shrink-0 text-[12px] text-muted">{formatUsd(price)}</span>
-            </button>
-          </li>
-        )
-      })}
-    </ol>
+    <button
+      type="button"
+      onClick={() => inspect(slot.id)}
+      onMouseEnter={() => hover(slot.id)}
+      onMouseLeave={() => hover(null)}
+      className={`flex w-full items-center gap-1.5 rounded-lg px-1 py-1 text-left ${
+        on ? 'bg-paper' : ''
+      }`}
+    >
+      <span className="w-3.5 shrink-0 text-[10px] text-muted">{rank}</span>
+      {occupied ? (
+        <img src={slot.holder!.logoDataUrl} alt="" className="h-6 w-6 shrink-0 rounded-md object-cover" />
+      ) : (
+        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-paper text-[12px] text-muted">
+          +
+        </span>
+      )}
+      <span className="min-w-0 flex-1 truncate text-[12px] text-ink">
+        {occupied ? slot.holder!.name : slotShort(slot.id)}
+      </span>
+      <span className="shrink-0 text-[11px] text-muted">{formatUsd(price)}</span>
+    </button>
   )
 }
 
@@ -71,20 +59,31 @@ export function Leaderboard({ side }: { side: 'left' | 'right' }) {
   const start = side === 'left' ? 1 : 6
 
   return (
-    <aside className="hidden w-[200px] shrink-0 lg:block">
-      <BoardColumn rows={rows} start={start} />
+    <aside className="hidden w-[148px] shrink-0 lg:block">
+      <ol>
+        {rows.map((slot, i) => (
+          <li key={slot.id}>
+            <Row slot={slot} rank={start + i} />
+          </li>
+        ))}
+      </ol>
     </aside>
   )
 }
 
 export function LeaderboardMobile() {
   const slots = useAuction((s) => s.slots)
-  const ranked = rankSlots(slots)
+  const ranked = rankSlots(slots).slice(0, 10)
 
   return (
-    <div className="flex w-full justify-center gap-3 lg:hidden">
-      <BoardColumn rows={ranked.slice(0, 5)} start={1} />
-      <BoardColumn rows={ranked.slice(5, 10)} start={6} />
+    <div className="overflow-x-auto">
+      <ol className="flex w-max gap-2">
+        {ranked.map((slot, i) => (
+          <li key={slot.id} className="w-[148px] shrink-0">
+            <Row slot={slot} rank={i + 1} />
+          </li>
+        ))}
+      </ol>
     </div>
   )
 }
