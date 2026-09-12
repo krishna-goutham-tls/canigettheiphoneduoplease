@@ -52,18 +52,16 @@ function Row({
   )
 }
 
-export function Leaderboard({ side }: { side: 'left' | 'right' }) {
+export function Leaderboard() {
   const slots = useAuction((s) => s.slots)
-  const ranked = rankSlots(slots)
-  const rows = side === 'left' ? ranked.slice(0, 5) : ranked.slice(5, 10)
-  const start = side === 'left' ? 1 : 6
+  const ranked = rankSlots(slots).slice(0, 10)
 
   return (
-    <aside className="hidden w-[148px] shrink-0 lg:block">
+    <aside className="w-full max-w-[200px]">
       <ol>
-        {rows.map((slot, i) => (
+        {ranked.map((slot, i) => (
           <li key={slot.id}>
-            <Row slot={slot} rank={start + i} />
+            <Row slot={slot} rank={i + 1} />
           </li>
         ))}
       </ol>
@@ -73,13 +71,14 @@ export function Leaderboard({ side }: { side: 'left' | 'right' }) {
 
 export function LeaderboardMobile() {
   const slots = useAuction((s) => s.slots)
-  const ranked = rankSlots(slots).slice(0, 10)
+  const ranked = rankSlots(slots).slice(0, 6)
 
   return (
-    <div className="overflow-x-auto">
-      <ol className="flex w-max gap-2">
+    <div>
+      <p className="mb-3 text-[12px] text-muted">on the board</p>
+      <ol className="grid grid-cols-2 gap-x-4 gap-y-1">
         {ranked.map((slot, i) => (
-          <li key={slot.id} className="w-[148px] shrink-0">
+          <li key={slot.id}>
             <Row slot={slot} rank={i + 1} />
           </li>
         ))}

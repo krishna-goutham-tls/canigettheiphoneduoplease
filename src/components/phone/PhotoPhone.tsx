@@ -9,12 +9,12 @@ export function PhotoPhone() {
   const hoveredId = useAuction((s) => s.hoveredId)
 
   return (
-    <div className="flex justify-center">
-      <div className="relative inline-block max-w-full">
+    <div className="flex justify-center px-2 lg:px-0">
+      <div className="relative w-full max-w-[920px]">
         <img
           src="/hero-image.png"
           alt="Open Duo"
-          className="block h-auto max-h-[min(70vh,720px)] w-auto max-w-full select-none lg:max-h-[min(82vh,920px)]"
+          className="block h-auto w-full select-none"
           draggable={false}
         />
         <div className="absolute inset-0">

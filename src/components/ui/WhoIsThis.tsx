@@ -35,7 +35,7 @@ function Pointer() {
   )
 }
 
-export function WhoIsThis() {
+export function WhoIsThis({ showNote = false }: { showNote?: boolean }) {
   const [open, setOpen] = useState(false)
   const wrap = useRef<HTMLDivElement>(null)
   const popupId = useId()
@@ -66,17 +66,28 @@ export function WhoIsThis() {
       >
         <XMark className="h-[15px] w-[15px]" />
       </button>
-      <Pointer />
-      <p className="max-w-[7.5rem] text-left font-hand text-[18px] leading-none text-muted sm:max-w-none sm:text-[20px]">
-        who is this guy?
-      </p>
+      {showNote ? (
+        <span className="flex items-center">
+          <Pointer />
+          <p className="text-left font-hand text-[20px] leading-none text-muted">
+            who is this guy?
+          </p>
+        </span>
+      ) : (
+        <span className="hidden items-center md:flex">
+          <Pointer />
+          <p className="text-left font-hand text-[18px] leading-none text-muted md:text-[20px]">
+            who is this guy?
+          </p>
+        </span>
+      )}
       {open ? (
         <a
           id={popupId}
           href={PROFILE}
           target="_blank"
           rel="noreferrer"
-          className="absolute bottom-[calc(100%+10px)] left-0 z-40 w-[260px] rounded-2xl border border-line bg-white p-3 text-left shadow-[0_16px_40px_rgba(0,0,0,0.14)]"
+          className="absolute right-0 top-[calc(100%+10px)] z-40 w-[260px] rounded-2xl border border-line bg-white p-3 text-left shadow-[0_16px_40px_rgba(0,0,0,0.14)]"
         >
           <span className="flex items-center gap-3">
             <img
@@ -90,7 +101,10 @@ export function WhoIsThis() {
             </span>
           </span>
           <span className="mt-2 block text-[13px] leading-snug text-muted">
-            teacher turned indie hacker.
+            teacher turned agentic engineer.
+          </span>
+          <span className="mt-1.5 block text-[12px] leading-snug text-muted">
+            i help small businesses go ai-first: what to build, and how to actually ship it.
           </span>
         </a>
       ) : null}

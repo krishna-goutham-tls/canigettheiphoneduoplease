@@ -3,6 +3,7 @@ import { Alumni } from './components/ui/Alumni'
 import { BidSheet } from './components/ui/BidSheet'
 import { HeroPlaque } from './components/ui/HeroPlaque'
 import { Leaderboard, LeaderboardMobile } from './components/ui/Leaderboard'
+import { WhoIsThis } from './components/ui/WhoIsThis'
 import { LocalNav } from './components/ui/LocalNav'
 import { PaymentReturn } from './components/ui/PaymentReturn'
 import { Rules } from './components/ui/Rules'
@@ -15,26 +16,39 @@ export default function App() {
     <div id="top" className="min-h-dvh bg-white text-ink">
       <AuctionSync />
       <PaymentReturn />
-      <LocalNav />
-
-      <section className="flex flex-col bg-white">
-        <div className="px-5 pb-3 pt-4 text-center sm:pt-6 md:px-8">
-          <HeroPlaque />
-        </div>
-        <div
-          id="slots"
-          className="mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center px-3 pb-6 pt-1 sm:px-5 lg:grid-cols-[148px_minmax(0,1fr)_148px] lg:gap-4 lg:pb-14"
-        >
-          <Leaderboard side="left" />
-          <div className="min-w-0">
+      <div className="flex min-h-dvh flex-col bg-white">
+        <LocalNav />
+        <section className="flex min-h-0 flex-1 flex-col">
+          <div className="px-5 pb-5 pt-6 text-center sm:px-8 sm:pb-6 sm:pt-8 lg:hidden">
+            <HeroPlaque />
+          </div>
+          <div className="min-w-0 lg:hidden">
             <PhotoPhone />
           </div>
-          <Leaderboard side="right" />
-        </div>
-        <div className="px-4 pb-10 lg:hidden">
-          <LeaderboardMobile />
-        </div>
-      </section>
+          <div className="flex flex-col gap-6 px-5 pb-8 pt-5 lg:hidden">
+            <div className="flex justify-center">
+              <WhoIsThis showNote />
+            </div>
+            <LeaderboardMobile />
+          </div>
+
+          <div
+            id="slots"
+            className="mx-auto hidden w-full max-w-[1280px] flex-1 grid-cols-[200px_minmax(0,1fr)_240px] items-start gap-x-6 px-8 pt-8 pb-10 lg:grid"
+          >
+            <Leaderboard />
+            <div className="min-w-0">
+              <HeroPlaque />
+              <div className="mt-8">
+                <PhotoPhone />
+              </div>
+            </div>
+            <div className="flex justify-end pt-2">
+              <WhoIsThis showNote />
+            </div>
+          </div>
+        </section>
+      </div>
 
       <div className="bg-paper text-ink">
         <SlotMap />
