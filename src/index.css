@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --color-black: #000000;
+  --color-paper: #f5f5f7;
+  --color-ink: #1d1d1f;
+  --color-muted: #6e6e73;
+  --color-blue: #0071e3;
+  --color-blue-hover: #0077ed;
+  --color-link: #0066cc;
+  --color-link-dark: #0066cc;
+  --color-fill: #e8e8ed;
+  --color-line: #d2d2d7;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background: #ffffff;
+  color: #1d1d1f;
+}
+
+body {
+  font-family: var(--font-sans);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #0071e3;
+  color: #fff;
+}
+
+button,
+a,
+input,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 4px solid rgba(0, 113, 227, 0.45);
+  outline-offset: 2px;
+}
+
+.btn-apple {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 980px;
+  background: #0071e3;
+  color: #fff;
+  font-size: 17px;
+  line-height: 1.17648;
+  font-weight: 400;
+  padding: 8px 16px;
+  border: 0;
+  transition: background-color 180ms ease;
+}
+
+.btn-apple:hover {
+  background: #0077ed;
+}
+
+.btn-apple:disabled {
+  opacity: 0.5;
+}
+
+.btn-apple-text {
+  color: #0066cc;
+  font-size: 17px;
+  line-height: 1.23536;
+  font-weight: 400;
+  background: none;
+  border: 0;
+  padding: 8px 4px;
+}
+
+.btn-apple-text:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
